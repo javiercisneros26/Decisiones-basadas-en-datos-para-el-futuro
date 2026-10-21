@@ -1,99 +1,66 @@
+# Futuros Posibles: decisiones basadas en datos
 
-# Debt Repayment Simulation
+Proyecto demostrativo de ciencia de datos que utiliza escenarios financieros, simulación de Monte Carlo y análisis de sensibilidad para explorar resultados hipotéticos a cinco años.
 
-A Python project exploring debt repayment scenarios through financial
-modeling, Monte Carlo simulation, and sensitivity analysis.
+Todos los valores utilizados son sintéticos y tienen fines exclusivamente ilustrativos. Este proyecto no contiene información real de clientes.
 
-## Project Overview
+## Objetivos
 
-This project demonstrates how simple computational models can help
-compare hypothetical financial scenarios over a five-year horizon.
+- Comparar distintas estrategias hipotéticas de ahorro mensual.
+- Simular 1.000 posibles resultados financieros bajo supuestos definidos.
+- Analizar cómo los niveles de ahorro afectan el saldo neto al final del período.
+- Demostrar el uso de Python para realizar análisis reproducibles.
 
-All data used in this public portfolio project are synthetic and
-illustrative. The project does not contain real client information.
+## Metodología
 
-## Objectives
+### 1. Análisis de escenarios
 
-- Compare different monthly savings strategies.
-- Simulate 1,000 hypothetical financial outcomes.
-- Evaluate how savings levels affect the final net balance.
-- Demonstrate reproducible analysis using Python.
+Compara cuatro estrategias hipotéticas de ahorro mensual: conservadora, moderada, objetivo y agresiva.
 
-## Methodology
+### 2. Simulación de Monte Carlo
 
-### 1. Scenario Analysis
+Realiza 1.000 simulaciones con valores de ahorro mensual seleccionados aleatoriamente entre 0 y 250 unidades monetarias. Se utiliza una semilla fija para facilitar la reproducción de los resultados.
 
-Compares four hypothetical monthly savings strategies:
+### 3. Análisis de sensibilidad
 
-- Conservative
-- Moderate
-- Target
-- Aggressive
+Evalúa cómo diferentes cantidades fijas de ahorro mensual afectan el saldo neto final al cabo de cinco años.
 
-### 2. Monte Carlo Simulation
-
-Generates 1,000 simulations using randomly selected monthly savings
-between 0 and 250 monetary units.
-
-A fixed random seed makes the results reproducible.
-
-### 3. Sensitivity Analysis
-
-Evaluates the effect of different fixed monthly savings amounts
-on the final net balance.
-
-## Technologies
+## Tecnologías utilizadas
 
 - Python
 - `random`
 - `statistics`
 
-No external Python packages are required.
+El proyecto utiliza módulos incluidos en la biblioteca estándar de Python, por lo que no requiere instalar paquetes externos.
 
-## Getting Started
+## Cómo ejecutar el proyecto
 
-### Requirements
+**Requisito:** Python 3.10 o una versión posterior.
 
-- Python 3.10 or newer
-
-### Run the project
-
-Clone or download this repository, open a terminal in the project
-directory, and run:
+1. Descarga o clona el repositorio.
+2. Abre una terminal en la carpeta del proyecto.
+3. Ejecuta:
 
 ```bash
 python simulation.py
 ```
 
-The program prints the scenario comparison, Monte Carlo results,
-and sensitivity analysis to the terminal.
+El programa muestra en la terminal los resultados del análisis de escenarios, la simulación de Monte Carlo y el análisis de sensibilidad.
 
-## Model Assumptions and Limitations
+## Supuestos y limitaciones
 
-- The initial debt is synthetic.
-- The projection horizon is five years.
-- Monthly savings are assumed to remain constant within each
-  fixed scenario.
-- Monte Carlo savings are sampled uniformly between 0 and 250.
-- Interest, inflation, fees, and income changes are not modeled.
-- The simulation is educational and does not predict an individual's
-  actual financial future.
+- La deuda inicial utilizada es sintética y se establece en 5.500 unidades monetarias.
+- El período analizado es de cinco años.
+- En los escenarios fijos, el ahorro mensual permanece constante.
+- En la simulación de Monte Carlo, el ahorro mensual se selecciona uniformemente entre 0 y 250 unidades monetarias.
+- No se modelan intereses, inflación, comisiones ni cambios en los ingresos.
+- El saldo final se calcula restando el ahorro acumulado a la deuda inicial; no representa un calendario real de amortización con intereses.
+- Los resultados dependen de los supuestos del modelo y no constituyen predicciones sobre la situación financiera de una persona.
 
-Results depend on the assumptions and simplifications used.
+## Uso responsable
 
-## Project Structure
+Este proyecto tiene fines educativos y de demostración de habilidades en ciencia de datos. No constituye asesoramiento financiero.
 
-```text
-debt-simulation/
-├── simulation.py
-└── README.md
-```
+## Autoría
 
-## Responsible Use
-
-This project is for educational and portfolio demonstration
-purposes only. It is not financial advice.
-
-## Author
-
-Data Science Portfolio Project
+Proyecto independiente de portafolio de ciencia de datos.
