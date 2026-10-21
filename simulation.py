@@ -1,114 +1,134 @@
-
+```python
 """
-Debt Repayment Simulation
-------------------------
-Portfolio project demonstrating:
-- Financial scenario analysis
-- Monte Carlo simulation
-- Sensitivity analysis
+Simulación de pago de deuda
+---------------------------
+Proyecto de portafolio que demuestra:
+- Análisis de escenarios financieros
+- Simulación de Monte Carlo
+- Análisis de sensibilidad
 
-All values are synthetic and illustrative.
-This model is educational, not financial advice.
+Todos los valores son sintéticos e ilustrativos.
+Este modelo tiene fines educativos y no constituye
+asesoramiento financiero.
 """
 
 import random
 from statistics import mean
 
-# Synthetic example assumptions
-INITIAL_DEBT = 5500.0
-PROJECTION_YEARS = 5
-MONTHS_PER_YEAR = 12
-SIMULATIONS = 1000
-RANDOM_SEED = 42
+# Supuestos del ejemplo con datos sintéticos
+DEUDA_INICIAL = 5500.0
+ANIOS_PROYECCION = 5
+MESES_POR_ANIO = 12
+NUMERO_SIMULACIONES = 1000
+SEMILLA_ALEATORIA = 42
 
-# Fixed monthly savings for each scenario
-SCENARIOS = {
-    "Conservative": 0,
-    "Moderate": 75,
-    "Target": 125,
-    "Aggressive": 200,
+# Ahorro mensual fijo para cada escenario
+ESCENARIOS = {
+    "Conservador": 0,
+    "Moderado": 75,
+    "Objetivo": 125,
+    "Agresivo": 200,
 }
 
-# Savings levels used in sensitivity analysis
-SENSITIVITY_LEVELS = [0, 50, 100, 150, 200, 250, 300]
+# Niveles de ahorro para el análisis de sensibilidad
+NIVELES_AHORRO = [0, 50, 100, 150, 200, 250, 300]
 
 
-def calculate_final_balance(monthly_savings):
-    """Calculate net balance after the projection period."""
-    total_savings = (
-        monthly_savings
-        * MONTHS_PER_YEAR
-        * PROJECTION_YEARS
+def calcular_saldo_final(ahorro_mensual):
+    """Calcula el saldo neto al finalizar el periodo proyectado."""
+    ahorro_acumulado = (
+        ahorro_mensual
+        * MESES_POR_ANIO
+        * ANIOS_PROYECCION
     )
-    return INITIAL_DEBT - total_savings
+    return DEUDA_INICIAL - ahorro_acumulado
 
 
-def show_scenarios():
-    """Compare fixed monthly savings scenarios."""
-    print("\n=== SCENARIO ANALYSIS ===")
+def mostrar_escenarios():
+    """Compara los escenarios de ahorro mensual fijo."""
+    print("\n=== ANALISIS DE ESCENARIOS ===")
 
-    for name, monthly_savings in SCENARIOS.items():
-        final_balance = calculate_final_balance(monthly_savings)
+    for nombre, ahorro_mensual in ESCENARIOS.items():
+        saldo_final = calcular_saldo_final(ahorro_mensual)
 
-        if final_balance > 0:
-            status = "Debt remaining"
+        if saldo_final > 0:
+            estado = "Deuda pendiente"
         else:
-            status = "Debt covered"
+            estado = "Deuda cubierta"
 
         print(
-            f"{name:12} | "
-            f"Monthly savings: {monthly_savings:6.2f} | "
-            f"Final net balance: {final_balance:8.2f} | "
-            f"{status}"
+            f"{nombre:12} | "
+            f"Ahorro mensual: {ahorro_mensual:6.2f} | "
+            f"Saldo neto final: {saldo_final:8.2f} | "
+            f"{estado}"
         )
 
 
-def run_monte_carlo():
-    """Simulate different monthly savings levels."""
-    print("\n=== MONTE CARLO SIMULATION ===")
+def ejecutar_monte_carlo():
+    """Simula distintos niveles de ahorro mensual."""
+    print("\n=== SIMULACION DE MONTE CARLO ===")
 
-    random.seed(RANDOM_SEED)
-    final_balances = []
+    random.seed(SEMILLA_ALEATORIA)
+    saldos_finales = []
 
-    for _ in range(SIMULATIONS):
-        monthly_savings = random.uniform(0, 250)
-        final_balance = calculate_final_balance(monthly_savings)
-        final_balances.append(final_balance)
+    for _ in range(NUMERO_SIMULACIONES):
+        ahorro_mensual = random.uniform(0, 250)
+        saldo_final = calcular_saldo_final(ahorro_mensual)
+        saldos_finales.append(saldo_final)
 
-    debt_covered = sum(
-        balance <= 0 for balance in final_balances
+    deudas_cubiertas = sum(
+        saldo <= 0 for saldo in saldos_finales
     )
-    probability = debt_covered / SIMULATIONS * 100
+    porcentaje_cubierto = (
+        deudas_cubiertas / NUMERO_SIMULACIONES * 100
+    )
 
-    print(f"Simulations: {SIMULATIONS}")
-    print(f"Debt covered in simulations: {debt_covered}")
-    print(f"Share with debt covered: {probability:.1f}%")
-    print(f"Average final net balance: {mean(final_balances):.2f}")
-    print(f"Lowest final net balance: {min(final_balances):.2f}")
-    print(f"Highest final net balance: {max(final_balances):.2f}")
+    print(f"Numero de simulaciones: {NUMERO_SIMULACIONES}")
+    print(f"Casos con deuda cubierta: {deudas_cubiertas}")
+    print(
+        f"Porcentaje de casos con deuda cubierta: "
+        f"{porcentaje_cubierto:.1f}%"
+    )
+    print(
+        f"Saldo neto final promedio: "
+        f"{mean(saldos_finales):.2f}"
+    )
+    print(
+        f"Saldo neto final minimo: "
+        f"{min(saldos_finales):.2f}"
+    )
+    print(
+        f"Saldo neto final maximo: "
+        f"{max(saldos_finales):.2f}"
+    )
 
-    return final_balances
+    return saldos_finales
 
 
-def show_sensitivity():
-    """Measure how savings affect the final net balance."""
-    print("\n=== SENSITIVITY ANALYSIS ===")
-    print("Monthly savings | Final net balance")
+def mostrar_sensibilidad():
+    """Evalúa cómo el ahorro afecta el saldo neto final."""
+    print("\n=== ANALISIS DE SENSIBILIDAD ===")
+    print("Ahorro mensual | Saldo neto final")
 
-    for monthly_savings in SENSITIVITY_LEVELS:
-        final_balance = calculate_final_balance(monthly_savings)
-        print(f"{monthly_savings:15.2f} | {final_balance:18.2f}")
+    for ahorro_mensual in NIVELES_AHORRO:
+        saldo_final = calcular_saldo_final(ahorro_mensual)
+        print(
+            f"{ahorro_mensual:15.2f} | "
+            f"{saldo_final:18.2f}"
+        )
 
 
-def main():
-    print("SYNTHETIC DEBT SIMULATION")
-    print(f"Projection horizon: {PROJECTION_YEARS} years")
-    print(f"Illustrative starting debt: {INITIAL_DEBT:.2f}")
+def principal():
+    """Ejecuta todos los análisis del proyecto."""
+    print("SIMULACION FINANCIERA CON DATOS SINTETICOS")
+    print(f"Horizonte de proyeccion: {ANIOS_PROYECCION} años")
+    print(f"Deuda inicial ilustrativa: {DEUDA_INICIAL:.2f}")
 
-    show_scenarios()
-    run_monte_carlo()
-    show_sensitivity()
+    mostrar_escenarios()
+    ejecutar_monte_carlo()
+    mostrar_sensibilidad()
 
 
 if __name__ == "__main__":
-    main()
+    principal()
+```
