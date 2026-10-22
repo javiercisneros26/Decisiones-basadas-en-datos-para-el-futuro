@@ -65,6 +65,24 @@ El programa muestra en la terminal los resultados del análisis de escenarios, l
 
 Este proyecto tiene fines educativos y de demostración de habilidades en ciencia de datos. No constituye asesoramiento financiero.
 
+## Conclusiones
+
+Este proyecto demuestra cómo Python puede utilizarse para explorar escenarios financieros hipotéticos mediante análisis de escenarios, simulación de Monte Carlo y análisis de sensibilidad.
+
+Los principales aprendizajes del ejercicio son:
+
+Comparación de estrategias: analizar diferentes niveles de ahorro mensual permite observar cómo las decisiones de ahorro afectan el saldo neto al final del período estudiado.
+
+Incertidumbre y variabilidad: la simulación de Monte Carlo permite explorar una variedad de resultados posibles bajo los supuestos establecidos, en lugar de depender de un único escenario.
+
+Análisis de sensibilidad: comparar distintos valores de ahorro ayuda a identificar cómo cambia el resultado final cuando se modifica una variable del modelo.
+
+Importancia de los supuestos: los resultados dependen de las condiciones definidas en la simulación. La ausencia de intereses, inflación, comisiones y variaciones de ingresos limita su aplicación a situaciones reales.
+
+En conclusión, el proyecto ilustra cómo las herramientas de ciencia de datos pueden apoyar la exploración y comparación de decisiones financieras. Los resultados son educativos y no constituyen predicciones ni recomendaciones financieras personales.
+
+Como posible mejora futura, el modelo podría ampliarse para incorporar tasas de interés, inflación y variaciones en los ingresos, permitiendo estudiar escenarios más cercanos a situaciones financieras reales.
+
 ## Autoría
 
 Proyecto independiente de portafolio de ciencia de datos.
