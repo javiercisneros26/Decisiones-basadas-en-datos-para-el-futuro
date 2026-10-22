@@ -17,9 +17,13 @@ Todos los valores utilizados son sintéticos y tienen fines exclusivamente ilust
 
 Compara cuatro estrategias hipotéticas de ahorro mensual: conservadora, moderada, objetivo y agresiva.
 
+![Comparación de escenarios financieros](graficos/escenarios.png)
+
 ### 2. Simulación de Monte Carlo
 
 Realiza 1.000 simulaciones con valores de ahorro mensual seleccionados aleatoriamente entre 0 y 250 unidades monetarias. Se utiliza una semilla fija para facilitar la reproducción de los resultados.
+
+![Distribución de resultados de Monte Carlo](graficos/monte_carlo.png)
 
 ### 3. Análisis de sensibilidad
 
